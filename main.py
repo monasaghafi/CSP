@@ -2,7 +2,13 @@ from CSP.Solver import Solver
 from SecretSanta.SecretSantaProblem import SecretSantaProblem
 from States.StatesProblem import StatesProblem
 from Sudoku.SudokuProblem import SudokuProblem
+from KingChoice.KingChoice import KingChoice
 
+
+    #king = KingChoice()
+    # s = Solver(king, use_forward_check=True)
+    # s.solve()
+    # king.print_assignments()
 #
 # states = StatesProblem()
 # s = Solver(states, use_forward_check=True)
