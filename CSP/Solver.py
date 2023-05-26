@@ -38,8 +38,24 @@ class Solver:
 
 
     def backtracking(self):
-        pass
         # Write your code here
+        unassigned_variables = self.problem.get_unassigned_variables()
+        if not unassigned_variables:
+            return True
+
+        variable = self.select_unassigned_variable()
+
+        for value in self.order_domain_values(variable):
+            variable.set(value)
+            if self.is_consistent(variable):
+                if self.backtracking():
+                    return True
+
+        variable.reset()
+        return False
+    '''we store the list of unassigned variables in a separate variable at the beginning of the function.
+      We also use the set method to update the value of the variable .
+      Additionally, we use the reset method for setting the value attribute to None.'''
 
     def forward_check(self, var):
         pass
@@ -61,12 +77,14 @@ class Solver:
         # Write your code here
 
     def is_consistent(self, var: Variable):
-        pass
         # Write your code here
+        return all(constraint.is_satisfied() for constraint in self.problem.constraints if var in constraint.variables)
+
 
 
     def lcv(self, var: Variable):
         pass
         # Write your code here
+
 
 
