@@ -15,7 +15,7 @@ class Const1(Constraint):
 
 class Const2(Constraint):
     def is_satisfied(self) -> bool:
-        if self.variables[0].value == 'blue' and self.variables[1].value != 'healing' or self.variables[1].value != 'acid':
+        if self.variables[0].value == 'blue' and self.variables[1].value != 'acid':
             return True
         return False
 
