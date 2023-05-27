@@ -36,30 +36,36 @@ class Solver:
         else:
             print(f'Failed to solve after {time_elapsed} ms')
 
-
     def backtracking(self):
-        # Write your code here
-        unassigned_variables = self.problem.get_unassigned_variables()
-        if not unassigned_variables:
+        if self.is_finished():
             return True
-
-        variable = self.select_unassigned_variable()
-
-        for value in self.order_domain_values(variable):
-            variable.set(value)
-            if self.is_consistent(variable):
-                if self.backtracking():
+        unassigned = self.problem.get_unassigned_variables()
+        var = self.select_unassigned_variable()
+        original_domain = var.domain.copy()
+        ordered_values = self.order_domain_values(var)
+        for value in ordered_values:
+            var.value = value
+            if self.forward_check(var):
+                result = self.backtracking()
+                if result:
                     return True
-
-        variable.reset()
+            var.value = None
+            var.domain = original_domain
         return False
-    '''we store the list of unassigned variables in a separate variable at the beginning of the function.
-      We also use the set method to update the value of the variable .
-      Additionally, we use the reset method for setting the value attribute to None.'''
 
     def forward_check(self, var):
-        pass
-        # Write your code here
+        constraints = self.problem.get_neighbor_constraints(var)
+        for constraint in constraints:
+            if not constraint.is_satisfied():
+                return False
+        if self.use_forward_check:
+            for neighbor in var.neighbors:
+                if neighbor.has_value:
+                    continue
+                neighbor.domain = [x for x in neighbor.domain if constraint.is_satisfied()]
+                if len(neighbor.domain) == 0:
+                    return False
+        # return True
 
     def select_unassigned_variable(self) -> Optional[Variable]:
         if self.use_mrv:
@@ -80,11 +86,6 @@ class Solver:
         # Write your code here
         return all(constraint.is_satisfied() for constraint in self.problem.constraints if var in constraint.variables)
 
-
-
     def lcv(self, var: Variable):
         pass
         # Write your code here
-
-
-
