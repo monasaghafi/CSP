@@ -46,21 +46,22 @@ grid2 = [
     [0, 0, 5, 0, 1, 0, 3, 0, 0]
 ]
 
-#
 
 if __name__ == '__main__':
     # sudoku = SudokuProblem(grid)
     # s = Solver(sudoku)
     # s.solve()
     # sudoku.print_assignments()
-    sudoku = SudokuProblem(grid1)
-    s = Solver(sudoku)
-    s.solve()
-    sudoku.print_assignments()
-    # sudoku = SudokuProblem(grid2)
+
+    # sudoku = SudokuProblem(grid1)
     # s = Solver(sudoku)
     # s.solve()
     # sudoku.print_assignments()
+
+    sudoku = SudokuProblem(grid2)
+    s = Solver(sudoku)
+    s.solve()
+    sudoku.print_assignments()
 
     # states = StatesProblem()
     # s = Solver(states, use_forward_check=True)
@@ -73,7 +74,8 @@ if __name__ == '__main__':
     # s = Solver(secret_santa)
     # s.solve()
     # secret_santa.print_assignments()
+    
     # king = KingChoice()
-    # s = Solver(king)
+    # s = Solver(king , use_lcv=False , use_mrv=True , use_forward_check=False)
     # s.solve()
     # king.print_assignments()
