@@ -79,13 +79,29 @@ class Solver:
         return var.domain
 
     def mrv(self) -> Optional[Variable]:
-        pass
-        # Write your code here
+        unassigned = self.problem.get_unassigned_variables()
+        if not unassigned:
+            return None
+        mrv = unassigned[0]
+        for var in unassigned:
+            if len(var.domain) < len(mrv.domain):
+                mrv = var
+        return mrv
 
     def is_consistent(self, var: Variable):
         # Write your code here
         return all(constraint.is_satisfied() for constraint in self.problem.constraints if var in constraint.variables)
 
-    def lcv(self, var: Variable):
-        pass
-        # Write your code here
+    def lcv(self, var):
+        domain_values = var.domain
+        constraints = self.problem.get_neighbor_constraints(var)
+        conflicts_count = {}
+        for value in domain_values:
+            var.value = value
+            conflicts_count[value] = 0
+            for constraint in constraints:
+                if not constraint.is_satisfied():
+                    conflicts_count[value] += 1
+            var.value = None
+        ordered_values = sorted(domain_values, key=lambda value: conflicts_count[value])
+        return ordered_values
