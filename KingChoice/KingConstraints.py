@@ -13,8 +13,7 @@ class Const1(Constraint):
     '''0 = color , 1 = type'''
 
     def is_satisfied(self) -> bool:
-        if self.variables[0].value != 'red' and self.variables[0].value != 'green' and self.variables[
-            1].value != 'transform':
+        if self.variables[0].value != 'red' and self.variables[0].value != 'green' and self.variables[1].value == 'transform':
             return True
         return False
 
@@ -28,8 +27,7 @@ class Const2(Constraint):
 
 class Const3(Constraint):
     def is_satisfied(self) -> bool:
-        if self.variables[0].value != 'black' and self.variables[0].value != 'purple' and self.variables[
-            1].value != 'poison':
+        if self.variables[0].value != 'black' and self.variables[0].value != 'purple' and self.variables[1].value == 'poison':
             return True
         return False
 
@@ -43,7 +41,6 @@ class Const4(Constraint):
 
 class Const5(Constraint):
     def is_satisfied(self) -> bool:
-        if self.variables[0].value != 'black' and self.variables[0].value != 'blue' and self.variables[
-            1].value == 'invisible':
+        if self.variables[0].value != 'black' and self.variables[0].value != 'blue' and self.variables[1].value == 'invisible':
             return True
         return False
