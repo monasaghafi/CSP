@@ -2,8 +2,9 @@ from CSP.Problem import Problem
 from CSP.Variable import Variable
 from Sudoku.SudokuConstraint import SudokuConstraint
 import os
-os.system("") # needed for ANSI escape characters to work on Windows
-from IPython.display import clear_output
+
+# os.system("")  # needed for ANSI escape characters to work on Windows
+# from IPython.display import clear_output
 
 
 class SudokuProblem(Problem):
@@ -49,8 +50,6 @@ class SudokuProblem(Problem):
         self.constraints = constraints
         self.variables = variables
 
-
-
     def print_assignments(self, current_var=None):
         rows = "ABCDEFGHI"
         cols = "123456789"
@@ -74,6 +73,3 @@ class SudokuProblem(Problem):
             row_str += "|"
             print(row_str)
         print(separator)
-
-
-
