@@ -65,7 +65,7 @@ class Solver:
                 neighbor.domain = [x for x in neighbor.domain if constraint.is_satisfied()]
                 if len(neighbor.domain) == 0:
                     return False
-        # return True
+        return True
 
     def select_unassigned_variable(self) -> Optional[Variable]:
         if self.use_mrv:

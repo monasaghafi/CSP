@@ -1,6 +1,6 @@
 from CSP.Problem import Problem
 from CSP.Variable import Variable
-from KingConstraints import *
+from KingChoice.KingConstraints import *
 
 
 class KingChoice(Problem):
