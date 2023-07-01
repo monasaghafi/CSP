@@ -18,11 +18,11 @@ class KingChoice(Problem):
     def __init__(self):
         super().__init__([], [], "King Problem")
 
-        color1 = Variable[str](['red', 'black', 'green', 'black', 'purple'], 'color1')
-        color2 = Variable[str](['red', 'black', 'green', 'black', 'purple'], 'color2')
-        color3 = Variable[str](['red', 'black', 'green', 'black', 'purple'], 'color3')
-        color4 = Variable[str](['red', 'black', 'green', 'black', 'purple'], 'color4')
-        color5 = Variable[str](['red', 'black', 'green', 'black', 'purple'], 'color5')
+        color1 = Variable[str](['red', 'black', 'green', 'blue', 'purple'], 'color1')
+        color2 = Variable[str](['red', 'black', 'green', 'blue', 'purple'], 'color2')
+        color3 = Variable[str](['red', 'black', 'green', 'blue', 'purple'], 'color3')
+        color4 = Variable[str](['red', 'black', 'green', 'blue', 'purple'], 'color4')
+        color5 = Variable[str](['red', 'black', 'green', 'blue', 'purple'], 'color5')
         type1 = Variable[str](['acid', 'poison', 'healing', 'transform', 'invisible'], 'type1')
         type2 = Variable[str](['acid', 'poison', 'healing', 'transform', 'invisible'], 'type2')
         type3 = Variable[str](['acid', 'poison', 'healing', 'transform', 'invisible'], 'type3')
